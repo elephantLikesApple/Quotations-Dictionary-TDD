@@ -57,4 +57,36 @@ class AppTest {
         assertThat(rs)
                 .contains("올바르지 않은 명령입니다.");
     }
+
+    @Test
+    @DisplayName("명언 등록하면 명언 번호 출력")
+    public void t5() {
+        String rs = AppTestRunner.run("""
+                등록
+                현재를 사랑하라.
+                작자미상
+                """);
+
+        assertThat(rs)
+                .contains("1번 명언이 등록되었습니다.")
+                .doesNotContain("올바르지 않은 명령입니다.");
+    }
+
+    @Test
+    @DisplayName("명언 등록하면 명언 번호 출력")
+    public void t6() {
+        String rs = AppTestRunner.run("""
+                등록
+                현재를 사랑하라.
+                작자미상
+                등록
+                과거에 집착하지 마라.
+                작자미상
+                """);
+
+        assertThat(rs)
+                .contains("1번 명언이 등록되었습니다.")
+                .contains("2번 명언이 등록되었습니다.")
+                .doesNotContain("올바르지 않은 명령입니다.");
+    }
 }
