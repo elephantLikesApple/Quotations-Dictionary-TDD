@@ -68,6 +68,8 @@ class AppTest {
                 """);
 
         assertThat(rs)
+                .contains("명언 : ")
+                .contains("작가 : ")
                 .contains("1번 명언이 등록되었습니다.")
                 .doesNotContain("올바르지 않은 명령입니다.");
     }
